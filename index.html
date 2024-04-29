@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kinoxus</title>
+    <link rel="shortcut icon" type="image/jpg" href="public/external/favicon.png" />
+    <meta name="description" content="Кращій український сервіс перегляду фільмів. Новинка: мандалорець. Галактична імперія впала. Її залишки наняли мисливця за головами для доставки цінного грузу, але груз виявився нестандартним...">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 frame1-container">
+                <div class="frame-frame">
+                    <div class="nav-pan">
+                        <img src="public/external/rectangle101270-4ga-200h.png" alt="Rectangle101270" class="frame1-container-navigation">
+                        <img src="public/external/rectangle111273-jgp-200h.png" alt="Rectangle111273" class="frame1-navigation">
+                        <div class="frame-text">Kinoxus</div>
+                        <div><h1 class="main-link">Основна</h1></div>
+                        <a href="frame1.html" class="about-link">Про нас</a>
+                        <a href="frame2.html" class="scheme-link">Схема залу</a>
+                        <div class="placeholder-contacts">Контакти</div>
+                        <img src="public/external/photo170916831331271-9sy4-200h.png" alt="photo170916831331271" class="frame1-photo17091683133">
+                    </div>
+                    <img src="public/external/mandalorian-bg.png" alt="photo17092264401824" class="frame-photo17092264401" id="main-bg"/>
+                    <img src="public/external/mandalorian-title.png" alt="IMAGE17092268376041825" class="frame-image17092268376041" id="main-title"/>
+                    <img src="public/external/image2821-ayku-1500w.png" alt="image2821" class="frame-image2" />
+                    <img src="public/external/rectangle6931-kuvb-400h.png" alt="Rectangle6931" class="frame-rectangle6" />
+                    <button class="btn btn-default button-main" id="buy-button">
+                        <img src="public/external/rectangle7932-dtkn-200h.png" alt="Rectangle7932" class="frame-rectangle7" />
+                        <span class="frame-text12" id="buy">Купити квиток</span>
+                    </button>
+                    <img src="public/external/rectangle5929-osfr-600w.png" alt="Rectangle5929" class="frame-rectangle5" />
+                    <div class="frame-text10" id="review">Це та сама очікувана атмосфера та відчуття "Зоряних воєн". Немає нерозумного гумору, продумані персонажі та сюжет.</div>
+                    <div class="frame-text14" id="desk">Галактична імперія впала. Її залишки наняли мисливця за головами для доставки цінного грузу, але груз виявився нестандартним...</div>
+                    <footer class="footer fixed-bottom text-center">
+                        <div class="container">
+                            <button class="btn btn-default main-oppenheimer" id="oppenheimer">
+                                <img src="public/external/oppenheimer-poster.png" alt="eskisCopyofPage221310" class="oppenheimer-but-img" />
+                            </button>
+                            <button class="btn btn-default main-barbie" id="barbie">
+                                <img src="public/external/barbie-poster.png" alt="eskisCopyofPage231310" class="barbie-but-img" />
+                            </button>
+                            <button class="btn btn-default main-spider-man" id="spider-man">
+                                <img src="public/external/spider-man-poster.png" alt="eskisCopyofPage231310" class="spider-man-but-img" />
+                            </button>
+                            <button class="btn btn-default main-puss-in-boots" id="puss-in-boots">
+                                <img src="public/external/puss-in-boots-poster.png" alt="eskisCopyofPage231310" class="puss-in-boots-img" />
+                            </button>
+                            <button class="btn btn-default main-guardians" id="guardians">
+                                <img src="public/external/guardians-poster.png" alt="eskisCopyofPage231310" class="guardians-img" />
+                            </button>
+                            <button class="btn btn-default main-flower-moon" id="flower-moon">
+                                <img src="public/external/flower-moon-poster.png" alt="eskisCopyofPage231310" class="flower-moon-img" />
+                            </button>
+                            <button class="btn btn-default main-john-wick" id="john-wick">
+                                <img src="public/external/john-wick-poster.png" alt="eskisCopyofPage231310" class="john-wick-img" />
+                            </button>
+                            <button class="btn btn-default main-mandalorian" id="mandalorian">
+                                <img src="public/external/mandalorian-poster.png" alt="eskisCopyofPage231310" class="mandalorian-img" />
+                            </button>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        localStorage.setItem('selected', 7);
+        const button = document.getElementById('buy-button');
+        button.addEventListener('click', function () {
+            var url = 'frame2.html';
+            url += '?selected=' + localStorage.getItem('selected');;
+            window.location.href = url;
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const bg = document.getElementById('main-bg');
+            const title = document.getElementById('main-title');
+            const review = document.getElementById('review');
+            const desk = document.getElementById('desk');
+
+            const oppenheimer = document.getElementById('oppenheimer');
+            const barbie = document.getElementById('barbie');
+            const spiderMan = document.getElementById('spider-man');
+            const puss = document.getElementById('puss-in-boots');
+            const guardians = document.getElementById('guardians');
+            const moon = document.getElementById('flower-moon');
+            const john = document.getElementById('john-wick');
+            const mandalorian = document.getElementById('mandalorian');
+
+            function switchCinema(index) {
+                var bgData = [
+                    'public/external/oppenheimer-bg.png',
+                    'public/external/barbie-bg.png',
+                    'public/external/spider-man-bg.png',
+                    'public/external/puss-in-boots-bg.png',
+                    'public/external/guardians-bg.png',
+                    'public/external/flower-moon-bg.png',
+                    'public/external/john-wick-bg.png',
+                    'public/external/mandalorian-bg.png'];
+                var titleData = [
+                    'public/external/oppenheimer-title.png',
+                    'public/external/barbie-title.png',
+                    'public/external/spider-man-title.png',
+                    'public/external/puss-in-boots-title.png',
+                    'public/external/guardians-title.png',
+                    'public/external/flower-moon-title.png',
+                    'public/external/john-wick-title.png',
+                    'public/external/mandalorian-title.png',];
+                var reviewData = [
+                    'Захоплююча подорож у світ науки, влади та моральних дилем, яка розкриває складну природу людини та її вплив на історію.',
+                    'Чарівна історія про пригоди, дружбу та самовдосконалення, яка навчає дітей цінувати унікальність кожної особистості.',
+                    'Захоплююча подорож у мультимовному універсумі Людини-павука, де зустрічаються різні версії героя в одній захоплюючій історії.',
+                    'Захоплююча анімаційна пригода, в якій відважний Кіт у Чоботах вирушає на пошуки останнього бажання, щоб розкрити таємниці свого минулого і побороти нових ворогів.',
+                    'Енергійне змішання космічної пригоди, веселого гумору та рухливих емоцій, що вибухає на екрані.',
+                    'Захоплюючий та емоційно важливий фільм, що розкриває темну сторону історії Сполучених Штатів.',
+                    'Надзвичайно енергійний та напружений екшн з захоплюючими боєвими сценами та інтригуючим сюжетом.',
+                    'Це та сама очікувана атмосфера та відчуття "Зоряних воєн". Немає нерозумного гумору, продумані персонажі та сюжет.'];
+                var descriptionData = [
+                    "Епічна драма про життя та внутрішні боротьби вченого Роберта Оппенгеймера, який керував розробкою ядерної зброї під час Другої світової війни.",
+                    'Кольорова та весела анімаційна пригода про пригоди і взаєморозуміння, яка надихає маленьких глядачів на віру в себе та дружбу.',
+                    'Захоплююче продовження історії про людину-павука, яке відзначається захоплюючою анімацією, неймовірними візуальними ефектами та захоплюючою сюжетною лінією.',
+                    'Чарівна анімаційна пригода, яка поєднує в собі гумор, екшн та емоційні моменти, розкриваючи нові грані улюбленого персонажа.',
+                    'Команда героїв шукає відповіді на питання свого минулого та зіштовхується з новими ворогами у неймовірній космічній пригоді.',
+                    'Напружений драматичний трилер, який розкриває темні таємниці загадкових вбивств і корупції серед індіанського народу Осейдж в 1920-х роках.',
+                    'Неймовірний екшн, який поглиблюєся в світі загадкового наємника, що вирішує розплатитися зі своєю минувшиною та знову потрапляє в вир жорстоких змагань.',
+                    'Галактична імперія впала. Її залишки наняли мисливця за головами для доставки цінного грузу, але груз виявився нестандартним...'];
+                var positionData = [
+                    '35px', '160px', '280px', '400px', '520px', '640px', '760px'];
+                var buttons = [oppenheimer, barbie, spiderMan, puss, guardians, moon, john, mandalorian];
+                bg.src = bgData[index];
+                title.src = titleData[index];
+                review.textContent = reviewData[index];
+                desk.textContent = descriptionData[index];
+                buttons[index].style.visibility = 'hidden';
+                var returnIndex = positionData.indexOf(mandalorian.style.left);
+                if (returnIndex != -1) {
+                    buttons[returnIndex].style.visibility = 'visible';
+                }
+                if (index == 7) {
+                    mandalorian.style.left = '880px';
+                } else {
+                    mandalorian.style.left = positionData[index];
+                    mandalorian.style.visibility = 'visible';
+                }
+                localStorage.setItem('selected', index);
+                adjustDeskPosition();
+                adjustTitlePosition();
+            }
+
+            oppenheimer.addEventListener('click', function () {
+                switchCinema(0); 
+            });
+            barbie.addEventListener('click', function () {
+                switchCinema(1);
+            });
+            spiderMan.addEventListener('click', function () {
+                switchCinema(2);
+            });
+            puss.addEventListener('click', function () {
+                switchCinema(3);
+            });
+            guardians.addEventListener('click', function () {
+                switchCinema(4);
+            });
+
+            moon.addEventListener('click', function () {
+                switchCinema(5);
+            });
+
+            john.addEventListener('click', function () {
+                switchCinema(6);
+            });
+
+            mandalorian.addEventListener('click', function () {
+                switchCinema(7);
+            });
+
+            function adjustDeskPosition() {
+                var photo = document.querySelector('.frame-photo17092264401');
+                var rect1 = document.querySelector('.frame-rectangle5');
+                var text1 = $('#desk');
+                var photoHeight = photo.offsetHeight;
+
+                var photoHeight = $(photo).height();
+                var rectHeight = $(rect1).height();
+
+                var fontSize = parseInt($(text1).css('fontSize'));
+                var heightDifference = $(text1).height() - rectHeight;
+
+                if (heightDifference > 10 && fontSize > 0) {
+                    while (heightDifference > 10 && fontSize > 0) {
+                        fontSize -= 1;
+                        $(text1).css('fontSize', fontSize + 'px');
+                        heightDifference = $(text1).height() - rectHeight;
+                    }
+                } else if (heightDifference < -10 && fontSize < 100) {
+                    while (heightDifference < -10 && fontSize < 100) {
+                        fontSize += 1;
+                        $(text1).css('fontSize', fontSize + 'px');
+                        heightDifference = $(text1).height() - rectHeight;
+                    }
+                }
+
+                var rectPercent = 45;
+                var rectOffset = (photoHeight * rectPercent) / 100;
+                rect1.style.top = (154 + rectOffset) + 'px';
+
+                var textPercent = 45;
+                var textOffset = (photoHeight * textPercent) / 100;
+                text1.css('top', (154 + textOffset) + 'px');
+            }
+
+            function adjustTitlePosition() {
+                var photo = document.querySelector('.frame-photo17092264401');
+                var image = document.querySelector('.frame-image17092268376041');
+                var rect1 = document.querySelector('.frame-rectangle6');
+                var text1 = $('#review');
+                var photoHeight = photo.offsetHeight;
+
+                var photoHeight = $(photo).height();
+                var rectHeight = $(rect1).height();
+
+                var fontSize = parseInt($(text1).css('fontSize'));
+                var heightDifference = $(text1).height() - rectHeight;
+
+                if (heightDifference > 10 && fontSize > 0) {
+                    while (heightDifference > 10 && fontSize > 0) {
+                        fontSize -= 1;
+                        $(text1).css('fontSize', fontSize + 'px');
+                        heightDifference = $(text1).height() - rectHeight;
+                    }
+                } else if (heightDifference < -10 && fontSize < 100) {
+                    while (heightDifference < -10 && fontSize < 100) {
+                        fontSize += 1;
+                        $(text1).css('fontSize', fontSize + 'px');
+                        heightDifference = $(text1).height() - rectHeight;
+                    }
+                }
+
+
+                var offsetPercentage = 45;
+                var offsetValue = (photoHeight * offsetPercentage) / 100;
+                image.style.top = (154 + photoHeight - offsetValue) + 'px';
+
+                var rectPercent = 8;
+                var rectOffset = (photoHeight * rectPercent) / 100;
+                rect1.style.top = (154 + rectOffset) + 'px';
+
+                var textPercent = 8;
+                var textOffset = (photoHeight * textPercent) / 100;
+                text1.css('top', (154 + textOffset) + 'px');
+            }
+        });
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            var navig = document.querySelector('.frame1-container-navigation');
+            adjustNavigationPosition();
+
+            window.addEventListener('resize', function () {
+                adjustNavigationPosition();
+            });
+
+            function adjustNavigationPosition() {
+                if (window.innerWidth >= 992) {
+                    navig.style.width = window.innerWidth + 'px';
+                    var navigRel = document.querySelector('.frame1-navigation');
+                    var constOffset = 0;
+                    if (window.innerWidth >= 1340) {
+                        var scrWidth = localStorage.getItem('screenwidth');
+                        if (scrWidth < 1340) {
+                            constOffset = -150;
+                            localStorage.setItem('screenwidth', window.innerWidth);
+                        } else {
+                            constOffset = 0;
+                        }
+                    } else {
+                        var scrWidth = localStorage.getItem('screenwidth');
+                        if (scrWidth >= 1340) {
+                            constOffset = 150;
+                            localStorage.setItem('screenwidth', window.innerWidth);
+                        } else {
+                            constOffset = 0;
+                        };
+                    }
+                    var initialLeft = parseFloat(getComputedStyle(navigRel).left);
+                    var newLeft = parseInt(navig.style.width) - 100 - navigRel.offsetWidth;
+                    navigRel.style.left = newLeft + 'px';
+                    var currentLeft = parseFloat(getComputedStyle(navigRel).left);
+                    var offset = currentLeft - initialLeft - constOffset;
+
+                    var labels = document.querySelectorAll('.main-link, .about-link, .scheme-link, .placeholder-contacts');
+
+                    var i = 0;
+                    var ratio = 0.0;
+                    labels.forEach(function (label) {
+                        var initialLabelLeft = parseFloat(getComputedStyle(label).left) || 0;
+                        switch (i) {
+                            case 0:
+                                ratio = 1.5;
+                                break;
+                            case 1:
+                                ratio = 1.0;
+                                break;
+                            case 2:
+                                ratio = 0.6;
+                                break;
+                            case 3:
+                                ratio = 0.2;
+                                break;
+                        }
+                        label.style.left = (initialLabelLeft + offset + (constOffset * ratio)) + 'px';
+                        i++;
+                    });
+
+                }
+            }
+        });
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+
+            adjustTitlePosition();
+
+            window.addEventListener('resize', function () {
+                adjustTitlePosition();
+            });
+
+            function adjustTitlePosition() {
+                var photo = document.querySelector('.frame-photo17092264401');
+                var image = document.querySelector('.frame-image17092268376041');
+                var rect1 = document.querySelector('.frame-rectangle6');
+                var text1 = $('#review');
+                var photoHeight = photo.offsetHeight;
+
+                var photoHeight = $(photo).height();
+                var rectHeight = $(rect1).height();
+
+                var fontSize = parseInt($(text1).css('fontSize'));
+                var heightDifference = $(text1).height() - rectHeight;
+
+                if (heightDifference > 10 && fontSize > 0) {
+                    while (heightDifference > 10 && fontSize > 0) {
+                        fontSize -= 1;
+                        $(text1).css('fontSize', fontSize + 'px');
+                        heightDifference = $(text1).height() - rectHeight;
+                    }
+                } else if (heightDifference < -10 && fontSize < 100) {
+                    while (heightDifference < -10 && fontSize < 100) {
+                        fontSize += 1;
+                        $(text1).css('fontSize', fontSize + 'px');
+                        heightDifference = $(text1).height() - rectHeight;
+                    }
+                }
+
+
+                var offsetPercentage = 45;
+                var offsetValue = (photoHeight * offsetPercentage) / 100;
+                image.style.top = (154 + photoHeight - offsetValue) + 'px';
+
+                var rectPercent = 8;
+                var rectOffset = (photoHeight * rectPercent) / 100;
+                rect1.style.top = (154 + rectOffset) + 'px';
+
+                var textPercent = 8;
+                var textOffset = (photoHeight * textPercent) / 100;
+                text1.css('top', (154 + textOffset) + 'px');
+            }
+        });
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+
+            adjustDeskPosition();
+
+            window.addEventListener('resize', function () {
+                adjustDeskPosition();
+            });
+
+            function adjustDeskPosition() {
+                var photo = document.querySelector('.frame-photo17092264401');
+                var rect1 = document.querySelector('.frame-rectangle5');
+                var text1 = $('#desk');
+                var photoHeight = photo.offsetHeight;
+
+                var photoHeight = $(photo).height();
+                var rectHeight = $(rect1).height();
+
+                var fontSize = parseInt($(text1).css('fontSize'));
+                var heightDifference = $(text1).height() - rectHeight;
+
+                if (heightDifference > 10 && fontSize > 0) {
+                    while (heightDifference > 10 && fontSize > 0) {
+                        fontSize -= 1;
+                        $(text1).css('fontSize', fontSize + 'px');
+                        heightDifference = $(text1).height() - rectHeight;
+                    }
+                } else if (heightDifference < -10 && fontSize < 100) {
+                    while (heightDifference < -10 && fontSize < 100) {
+                        fontSize += 1;
+                        $(text1).css('fontSize', fontSize + 'px');
+                        heightDifference = $(text1).height() - rectHeight;
+                    }
+                }
+
+                var rectPercent = 45;
+                var rectOffset = (photoHeight * rectPercent) / 100;
+                rect1.style.top = (154 + rectOffset) + 'px';
+
+                var textPercent = 45;
+                var textOffset = (photoHeight * textPercent) / 100;
+                text1.css('top', (154 + textOffset) + 'px');
+            }
+        });
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+
+            adjustButtonPosition();
+
+            window.addEventListener('resize', function () {
+                adjustButtonPosition();
+            });
+
+            function adjustButtonPosition() {
+                var photo = document.querySelector('.frame-photo17092264401');
+                var rect1 = document.querySelector('.frame-rectangle7');
+                var text1 = $('#buy');
+                var photoHeight = photo.offsetHeight;
+
+                var photoHeight = $(photo).height();
+                var rectHeight = $(rect1).height();
+
+                var fontSize = parseInt($(text1).css('fontSize'));
+                var heightDifference = $(text1).height() - rectHeight;
+
+                if (heightDifference > 10 && fontSize > 0) {
+                    while (heightDifference > 10 && fontSize > 0) {
+                        fontSize -= 1;
+                        $(text1).css('fontSize', fontSize + 'px');
+                        heightDifference = $(text1).height() - rectHeight;
+                    }
+                } else if (heightDifference < -20 && fontSize < 100) {
+                    while (heightDifference < -20 && fontSize < 100) {
+                        fontSize += 1;
+                        $(text1).css('fontSize', fontSize + 'px');
+                        heightDifference = $(text1).height() - rectHeight;
+                    }
+                }
+
+                var rectPercent = 85;
+                var rectOffset = (photoHeight * rectPercent) / 100;
+                rect1.style.top = (154 + rectOffset) + 'px';
+
+                var textPercent = 85;
+                var textOffset = (photoHeight * textPercent) / 100;
+                text1.css('top', (154 + textOffset) + 'px');
+            }
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

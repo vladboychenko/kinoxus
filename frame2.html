@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kinoxus</title>
+    <meta name="description" content="Ми особливо важливо ставимося до безпеки та планування місць під час сеансу. Деталізовані схеми кожного з основних залів можна побачити тут.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/jpg" href="public/external/favicon.png" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./frame2.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 frame1-container">
+                <div class="frame2-frame">
+                    <div id="popup" class="popup">
+                        <div class="popup-content" id="popupContent">
+                            <span class="close" id="closePopupBtn">&times;</span>
+                            <p>Покупка успішна!</p>
+                        </div>
+                    </div>
+                    <div class="nav-pan">
+                        <img src="public/external/rectangle101270-4ga-200h.png" alt="Rectangle101270" class="frame1-container-navigation">
+                        <img src="public/external/rectangle111273-jgp-200h.png" alt="Rectangle111273" class="frame1-navigation">
+                        <div class="frame2-text">Kinoxus</div>
+                        <a href="index.html" class="main-link">Основна</a>
+                        <a href="frame1.html" class="about-link">Про нас</a>
+                        <div><h1 class="scheme-link">Схема залу</h1></div>
+                        <div class="placeholder-contacts">Контакти</div>
+                        <img src="public/external/photo170916831331271-9sy4-200h.png" alt="photo170916831331271" class="frame1-photo17091683133">
+                    </div>
+                    <img src="public/external/cinema-hall1.png" alt="felixmooneeramevlkOfkQ5rEunsplash11296" class="cinema-hall1 img-responsive img-fluid" id="hall-photo" />
+                    <div class="frame2-text10" id="photo-text">Фотографія залу 1</div>
+                    <div class="frame2-text12" id="scheme-text">Схема залу 1</div>
+                    <img src="public/external/eskispage211310-fhe-800w.png" alt="eskisPage211310" class="frame2-eskis-page21" id="image-page" />
+                    <footer class="footer fixed-bottom text-center py-3">
+                        <div class="container">
+                            <div class="frame2-text14" id="button1-text">Зал 2</div>
+                            <div class="frame2-text16" id="button2-text">Зал 3</div>
+                            <img src="public/external/eskis-xd1.png" alt="eskisPage211310" class="frame2-eskis-page21 img-responsive" />
+                            <button class="btn btn-default frame2-eskis-copyof-page22" id="page2">
+                                <img src="public/external/eskiscopyofpage221310-47bi-200h.png" alt="eskisCopyofPage221310" class="frame2-eskis-copyof-page22-img" />
+                            </button>
+                            <button class="btn btn-default frame2-eskis-copyof-page23" id="page3">
+                                <img src="public/external/eskiscopyofpage231310-lp8j-200h.png" alt="eskisCopyofPage231310" class="frame2-eskis-copyof-page23-img" />
+                            </button>
+                            <button class="btn btn-default frame2-eskis-copyof-page21" id="page1">
+                                <img src="public/external/eskispage211310-fhe-800w.png" alt="eskisCopyofPage221310" class="frame2-eskis-copyof-page21-img" />
+                            </button>
+                            <div class="tip-1" id="tip-1">
+                                Місце:
+                            </div>
+                            <input class="btn btn-default enter-spot" id="spot-field" placeholder="Введіть номер місця..." />
+                            <div class="tip-2" id="tip-2">
+                                Час:
+                            </div>
+                            <select class="btn btn-default time-selector" id="select-time">
+                            </select>
+                            <button class="btn btn-default ok-button" id="ok-button">
+                                OK
+                            </button>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedFilm = urlParams.get('selected');
+
+        if (selectedFilm !== null) {
+            const textField = document.getElementById('spot-field');
+            const selector = document.getElementById('select-time');
+            const tip1 = document.getElementById('tip-1');
+            const tip2 = document.getElementById('tip-2');
+            const ready = document.getElementById('ok-button');
+            var flag = false;
+            for (var i = 0; i < 10; i++) {
+                var option = document.createElement('option');
+                var value = '';
+                value += (10 - parseInt(selectedFilm) + i * 2) + '.05.2024';
+                if (flag) {
+                    value += ' 15:00 \n';
+                    flag = false;
+                } else {
+                    value += ' 10:00 \n';
+                    flag = true;
+                }
+                option.value = i;
+                option.innerHTML = value;
+                selector.appendChild(option);
+            }
+            textField.style.visibility = 'visible';
+            selector.style.visibility = 'visible';
+            ready.style.visibility = 'visible';
+            tip1.style.visibility = 'visible';
+            tip2.style.visibility = 'visible';
+            const films = ['Oppenheimer', 'Barbie', 'Spider-Man: Across the Spider-verse', 'Puss in boots: The Last Wish', 'Killers of the flower moon', 'Guardians of the galaxy: Vol.3', 'John Wick 4', 'The Mandalorian'];
+            var modal = document.getElementById("popup");
+            var span = document.getElementById("closePopupBtn");
+            var popupContent = document.getElementById("popupContent");
+            ready.onclick = function () {
+                var inputValue = textField.value;
+                var inputNumber = parseInt(inputValue);
+                if (!isNaN(inputNumber) && inputNumber >= 1 && inputNumber <= 32) {
+                    textField.style.visibility = 'hidden';
+                    selector.style.visibility = 'hidden';
+                    ready.style.visibility = 'hidden';
+                    tip1.style.visibility = 'hidden';
+                    tip2.style.visibility = 'hidden';
+                    console.log("Selected Film:", parseInt(selectedFilm)); console.log("Selected Film:", films);
+                    var film = films[parseInt(selectedFilm)];
+                    console.log("Selected Film:", film);
+                    popupContent.textContent = "Успішно куплено білет на сеанс кіно " + film + ' на місце ' + inputNumber + ' з початком у ' + selector.options[selector.selectedIndex].innerHTML;
+                    modal.style.display = "block";
+                } else {
+                    popupContent.textContent = "Помилка: місце може мати значення лише від 1 до 32!";
+                    modal.style.display = "block";
+                    return;
+                }
+            }
+            span.onclick = function () {
+                if (ready.style.visibility == 'hidden')
+                    window.location.href = 'index.html';
+                else modal.style.display = "none";
+            }
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    if (ready.style.visibility == 'hidden')
+                        window.location.href = 'index.html';
+                    else modal.style.display = "none";
+                }
+            }
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const image = document.getElementById('image-page');
+            const button = document.getElementById('page2');
+            const newImage = 'public/external/eskis-xd2.png';
+            const text1 = document.getElementById('scheme-text');
+            const text2 = document.getElementById('photo-text');
+            const text3 = document.getElementById('button1-text');
+            const text4 = document.getElementById('button2-text');
+            const button3 = document.getElementById('page3');
+
+            const buttonReset = document.getElementById('page1');
+
+            const hall = document.getElementById('hall-photo');
+            const newHall = 'public/external/cinema-hall2.png';
+
+            function changeImage() {
+                image.src = newImage;
+                hall.src = newHall;
+                text1.textContent = "Схема залу 2";
+                text2.textContent = "Фотографія залу 2";
+                text3.textContent = "Зал 1"
+                if (buttonReset.style.left == '160px') {
+                    button3.style.visibility = 'visible';
+                    text4.textContent = "Зал 3";
+                }
+                buttonReset.style.left = '35px';
+                buttonReset.style.visibility = 'visible';
+                button.style.visibility = 'hidden';
+
+            }
+
+            button.addEventListener('click', changeImage);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const image = document.getElementById('image-page');
+            const button = document.getElementById('page3');
+            const newImage = 'public/external/eskis-xd3.png';
+            const text1 = document.getElementById('scheme-text');
+            const text2 = document.getElementById('photo-text');
+            const text3 = document.getElementById('button2-text');
+            const text4 = document.getElementById('button1-text');
+            const button2 = document.getElementById('page2');
+
+            const buttonReset = document.getElementById('page1');
+
+            const hall = document.getElementById('hall-photo');
+            const newHall = 'public/external/cinema-hall3.png';
+
+            function changeImage() {
+                image.src = newImage;
+                hall.src = newHall;
+                text1.textContent = "Схема залу 3";
+                text2.textContent = "Фотографія залу 3";
+                text3.textContent = "Зал 1"
+                if (buttonReset.style.left == '35px') {
+                    button2.style.visibility = 'visible';
+                    text4.textContent = "Зал 2";
+                }
+                buttonReset.style.left = '160px';
+                buttonReset.style.visibility = 'visible';
+                button.style.visibility = 'hidden';
+            }
+
+            button.addEventListener('click', changeImage);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const image = document.getElementById('image-page');
+            const button = document.getElementById('page1');
+            const newImage = 'public/external/eskis-xd1.png';
+            const text1 = document.getElementById('scheme-text');
+            const text2 = document.getElementById('photo-text');
+            const text3 = document.getElementById('button1-text');
+            const text4 = document.getElementById('button2-text');
+            const button2 = document.getElementById('page2');
+            const button3 = document.getElementById('page3');
+            const hall = document.getElementById('hall-photo');
+            const newHall = 'public/external/cinema-hall1.png';
+
+            function changeImage() {
+                image.src = newImage;
+                hall.src = newHall;
+                text1.textContent = "Схема залу 1";
+                text2.textContent = "Фотографія залу 1";
+                if (button.style.left == '35px') {
+                    button2.style.visibility = 'visible';
+                    text3.textContent = "Зал 2";
+                    button.style.visibility = 'hidden';
+                } else {
+                    button3.style.visibility = 'visible';
+                    text4.textContent = "Зал 3";
+                    button.style.visibility = 'hidden';
+                }
+                button.style.left = '280px';
+            }
+
+            button.addEventListener('click', changeImage);
+        });
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            var navig = document.querySelector('.frame1-container-navigation');
+            adjustNavigationPosition();
+
+            window.addEventListener('resize', function () {
+                adjustNavigationPosition();
+            });
+
+            function adjustNavigationPosition() {
+                if (window.innerWidth >= 992) {
+                    navig.style.width = window.innerWidth + 'px';
+                    var navigRel = document.querySelector('.frame1-navigation');
+                    var constOffset = 0;
+                    if (window.innerWidth >= 1340) {
+                        var scrWidth = localStorage.getItem('screenwidth');
+                        if (scrWidth < 1340) {
+                            constOffset = -150;
+                            localStorage.setItem('screenwidth', window.innerWidth);
+                        } else {
+                            constOffset = 0;
+                        }
+                    } else {
+                        var scrWidth = localStorage.getItem('screenwidth');
+                        if (scrWidth >= 1340) {
+                            constOffset = 150;
+                            localStorage.setItem('screenwidth', window.innerWidth);
+                        } else {
+                            constOffset = 0;
+                        };
+                    }
+                    var initialLeft = parseFloat(getComputedStyle(navigRel).left);
+                    var newLeft = parseInt(navig.style.width) - 100 - navigRel.offsetWidth;
+                    navigRel.style.left = newLeft + 'px';
+                    var currentLeft = parseFloat(getComputedStyle(navigRel).left);
+                    var offset = currentLeft - initialLeft - constOffset;
+
+                    var labels = document.querySelectorAll('.main-link, .about-link, .scheme-link, .placeholder-contacts');
+
+                    var i = 0;
+                    var ratio = 0.0;
+                    labels.forEach(function (label) {
+                        var initialLabelLeft = parseFloat(getComputedStyle(label).left) || 0;
+                        switch (i) {
+                            case 0:
+                                ratio = 1.5;
+                                break;
+                            case 1:
+                                ratio = 1.0;
+                                break;
+                            case 2:
+                                ratio = 0.6;
+                                break;
+                            case 3:
+                                ratio = 0.2;
+                                break;
+                        }
+                        label.style.left = (initialLabelLeft + offset + (constOffset * ratio)) + 'px';
+                        i++;
+                    });
+
+                }
+            }
+        });
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            var image1 = document.querySelector('.frame2-eskis-page21');
+            var div1 = document.querySelector('.frame2-text12');
+            var image2 = document.querySelector('.cinema-hall1');
+            var div2 = document.querySelector('.frame2-text10');
+            if (image1 && div1 && image2 && div2) {
+                var halfWidth1 = image1.offsetWidth / 2;
+                div1.style.left = halfWidth1 + 'px';
+                var halfWidth2 = image2.offsetWidth / 2;
+                var computedStyle = window.getComputedStyle(image2);
+                var left = parseInt(computedStyle.getPropertyValue('left'));
+                div2.style.left = (left + halfWidth2 - 200) + 'px';
+
+                window.addEventListener('resize', function () {
+                    var halfWidth1 = image1.offsetWidth / 2;
+                    div1.style.left = halfWidth1 + 'px';
+                    var halfWidth2 = image2.offsetWidth / 2;
+                    var computedStyle = window.getComputedStyle(image2);
+                    var left = parseInt(computedStyle.getPropertyValue('left'));
+                    div2.style.left = (left + halfWidth2 - 200) + 'px';
+                });
+            } else {
+                console.error('One or more of the elements are missing.');
+            }
+        });
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kinoxus</title>
+    <link rel="shortcut icon" type="image/jpg" href="public/external/favicon.png" />
+    <meta name="description" content="Назва нашого кінотеатру - kinoxus. Ми знаходимось у Одесі в ТЦ “City center”. Наш кінотеатр є одним з найкращих центрів розваг у цьому районі, тисячі наших клієнтів регулярно приходять до нас, щоб покращити свої вихідні.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./frame1.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 frame1-container">
+                <div class="frame1-frame">
+                    <div class="nav-pan">
+                        <img src="public/external/rectangle101270-4ga-200h.png" alt="Rectangle101270" class="frame1-container-navigation">
+                        <img src="public/external/rectangle111273-jgp-200h.png" alt="Rectangle111273" class="frame1-navigation">
+                        <div class="frame1-text">Kinoxus</div>
+                        <a href="index.html" class="main-link ">Основна</a>
+                        <div><h1 class="about-link">Про нас</h1></div>
+                        <a href="frame2.html" class="scheme-link">Схема залу</a>
+                        <div class="placeholder-contacts">Контакти</div>            
+                        <img src="public/external/photo170916831331271-9sy4-200h.png" alt="photo170916831331271" class="frame1-photo17091683133">
+                    </div>
+                    <div class="content">
+                        <div class="frame1-rect"></div>
+                        <div class="frame1-text20">Kinoxus</div>
+                        <div class="frame1-text22">Назва нашого кінотеатру - kinoxus. Ми знаходимось у Одесі в ТЦ “City center”. Наш кінотеатр є одним з найкращих центрів розваг у цьому районі, тисячі наших клієнтів регулярно приходять до нас, щоб покращити свої вихідні. Ми офіційно сертифіковані та нагороджені багатьма нагород за якість. Поганий день? Не втрачай час та скоріш покращ його у нашому кінотеатрі!</div>
+                        <img src="public/external/image171316-t1rc-600h.png" alt="image171316" class="frame1-image17">
+                        <div class="frame1-text24">Фотографія кінотеатру</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+       <script>
+            window.addEventListener('DOMContentLoaded', function () {
+            var navig = document.querySelector('.frame1-container-navigation');
+            adjustNavigationPosition();
+
+            window.addEventListener('resize', function () {
+                adjustNavigationPosition();
+            });
+
+            function adjustNavigationPosition() {
+                if (window.innerWidth >= 992) {
+                    navig.style.width = window.innerWidth + 'px';
+                    var navigRel = document.querySelector('.frame1-navigation');
+                    var constOffset = 0;
+                    if (window.innerWidth >= 1340) {
+                        var scrWidth = localStorage.getItem('screenwidth');
+                        if (scrWidth < 1340) {
+                            constOffset = -150;
+                            localStorage.setItem('screenwidth', window.innerWidth);
+                        } else {
+                            constOffset = 0;
+                        }
+                    } else {
+                        var scrWidth = localStorage.getItem('screenwidth');
+                        if (scrWidth >= 1340) {
+                            constOffset = 150;
+                            localStorage.setItem('screenwidth', window.innerWidth);
+                        } else {
+                            constOffset = 0;
+                        };
+                    }
+                    var initialLeft = parseFloat(getComputedStyle(navigRel).left);
+                    var newLeft = parseInt(navig.style.width) - 100 - navigRel.offsetWidth;
+                    navigRel.style.left = newLeft + 'px';
+                    var currentLeft = parseFloat(getComputedStyle(navigRel).left);
+                    var offset = currentLeft - initialLeft - constOffset;
+
+                    var labels = document.querySelectorAll('.main-link, .about-link, .scheme-link, .placeholder-contacts');
+
+                    var i = 0;
+                    var ratio = 0.0;
+                    labels.forEach(function (label) {
+                        var initialLabelLeft = parseFloat(getComputedStyle(label).left) || 0;
+                        switch (i) {
+                            case 0:
+                                ratio = 1.5;
+                                break;
+                            case 1:
+                                ratio = 1.0;
+                                break;
+                            case 2:
+                                ratio = 0.6;
+                                break;
+                            case 3:
+                                ratio = 0.2;
+                                break;
+                        }
+                        label.style.left = (initialLabelLeft + offset + (constOffset * ratio)) + 'px';
+                        i++;
+                    });
+
+                }
+            }
+            });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
