@@ -11,34 +11,42 @@
     <link rel="stylesheet" href="./frame1.css">
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 frame1-container">
-                <div class="frame1-frame">
-                    <div class="nav-pan">
-                        <img src="public/external/rectangle101270-4ga-200h.png" alt="Rectangle101270" class="frame1-container-navigation">
-                        <img src="public/external/rectangle111273-jgp-200h.png" alt="Rectangle111273" class="frame1-navigation">
-                        <div class="frame1-text">Kinoxus</div>
-                        <a href="index.html" class="main-link ">Основна</a>
-                        <div><h1 class="about-link">Про нас</h1></div>
-                        <a href="frame2.html" class="scheme-link">Схема залу</a>
-                        <div class="placeholder-contacts">Контакти</div>            
-                        <img src="public/external/photo170916831331271-9sy4-200h.png" alt="photo170916831331271" class="frame1-photo17091683133">
-                    </div>
-                    <div class="content">
-                        <div class="frame1-rect"></div>
-                        <div class="frame1-text20">Kinoxus</div>
-                        <div class="frame1-text22">Назва нашого кінотеатру - kinoxus. Ми знаходимось у Одесі в ТЦ “City center”. Наш кінотеатр є одним з найкращих центрів розваг у цьому районі, тисячі наших клієнтів регулярно приходять до нас, щоб покращити свої вихідні. Ми офіційно сертифіковані та нагороджені багатьма нагород за якість. Поганий день? Не втрачай час та скоріш покращ його у нашому кінотеатрі!</div>
-                        <img src="public/external/image171316-t1rc-600h.png" alt="image171316" class="frame1-image17">
-                        <div class="frame1-text24">Фотографія кінотеатру</div>
-                    </div>
-
-                </div>
-            </div>
+    <div class="everything">
+        <div class="nav-pan">
+            <button class="menu-button button">
+                <img src="public/external/menu.png" alt="menu" class="menu-image">
+            </button>
+            <img src="public/external/rectangle101270-4ga-200h.png" alt="Rectangle101270" class="frame1-container-navigation">
+            <img src="public/external/rectangle111273-jgp-200h.png" alt="Rectangle111273" class="frame1-navigation">
+            <div class="frame1-text">Kinoxus</div>
+            <a href="index.html" class="main-link ">Основна</a>
+            <div><h1 class="about-link">Про нас</h1></div>
+            <a href="frame2.html" class="scheme-link">Схема залу</a>
+            <div class="placeholder-contacts">Контакти</div>
+            <img src="public/external/photo170916831331271-9sy4-200h.png" alt="photo170916831331271" class="frame1-photo17091683133">
         </div>
+        <div class="content">
+            <div class="frame1-rect"></div>
+            <div class="frame1-text20">Kinoxus</div>
+            <div class="frame1-text22" id="about-text">Назва нашого кінотеатру - kinoxus. Ми знаходимось у Одесі в ТЦ “City center”. Наш кінотеатр є одним з найкращих центрів розваг у цьому районі, тисячі наших клієнтів регулярно приходять до нас, щоб покращити свої вихідні. Ми офіційно сертифіковані та нагороджені багатьма нагород за якість. Поганий день? Не втрачай час та скоріш покращ його у нашому кінотеатрі!</div>
+            <img src="public/external/image171316-t1rc-600h.png" alt="image171316" class="frame1-image17">
+            <div class="frame1-text24">Фотографія кінотеатру</div>
+        </div>
+        <div class="mobile-nav">
+            <img src="public/external/photo170916831331271-9sy4-200h.png" alt="logomenu" class="menu-logo">
+            <div class="menu-text">Kinoxus</div>
+            <button class="menu-cancel button">
+                <img src="public/external/cancel.png" alt="menu" class="cancel-image">
+            </button>
+            <a href="index.html" class="menu-main-link">Основна</a>
+            <h1 class="menu-about-link">Про нас</h1>
+            <a href="frame2.html" class="menu-scheme-link">Схема залу</a>
+            <div class="menu-placeholder-contacts">Контакти</div>
+        </div>
+
     </div>
-       <script>
-            window.addEventListener('DOMContentLoaded', function () {
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
             var navig = document.querySelector('.frame1-container-navigation');
             adjustNavigationPosition();
 
@@ -100,9 +108,93 @@
 
                 }
             }
-            });
+        });
     </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
 
+            adjustDeskPosition();
+
+            window.addEventListener('resize', function () { adjustDeskPosition(); });
+
+            function adjustDeskPosition() {
+                var rect1 = document.querySelector('.frame1-rect');
+                var text1 = $('#about-text');
+
+                var rectHeight = $(rect1).height();
+
+                var fontSize = parseInt($(text1).css('fontSize'));
+                var heightDifference = $(text1).height() - rectHeight + 150;
+
+                if (heightDifference > 10 && fontSize > 12) {
+                    while (heightDifference > 10 && fontSize > 12) {
+                        fontSize -= 1;
+                        $(text1).css('fontSize', fontSize + 'px');
+                        heightDifference = $(text1).height() - rectHeight + 150;
+                    }
+                } else if (heightDifference < -10 && fontSize < 100) {
+                    while (heightDifference < -10 && fontSize < 100) {
+                        fontSize += 1;
+                        $(text1).css('fontSize', fontSize + 'px');
+                        heightDifference = $(text1).height() - rectHeight + 150;
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+
+            adjustScreenHeight();
+
+            window.addEventListener('resize', function () {
+                adjustScreenHeight();
+            });
+
+            function adjustScreenHeight() {
+                var frame = document.querySelector('.everything');
+
+                var photo = document.querySelector('.frame1-image17');
+                var photoStyle = window.getComputedStyle(photo); 
+                var photoPos = parseInt(photoStyle.top) + parseInt(photoStyle.height);
+                console.log(photoPos);
+                if (photoPos > window.innerHeight * 1.5) {
+                    frame.style.height = (photoPos + 100) + 'px';
+                } else {
+                    frame.style.height = (window.innerHeight * 1.5) + 'px';
+                }
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButton = document.querySelector('.menu-button');
+            const cancelButton = document.querySelector('.menu-cancel');
+            const mobileNav = document.querySelector('.mobile-nav');
+
+            toggleButton.addEventListener('click', function (event) {
+                mobileNav.classList.toggle('show');
+                event.stopPropagation();
+            });
+            cancelButton.addEventListener('click', function () {
+                mobileNav.classList.remove('show');
+            });
+            document.addEventListener('click', function (event) {
+                if (!mobileNav.contains(event.target) && event.target !== toggleButton) {
+                    mobileNav.classList.remove('show');
+                }
+            });
+            window.addEventListener('resize', function () {
+                if (mobileNav.classList.contains('show')) {
+                    if (window.innerWidth >= 992) {
+                        mobileNav.classList.remove('show');
+                    }
+                }
+            });
+        });
+
+
+    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
